@@ -44,6 +44,11 @@ try {
 // defining routes
 app.use("/api/users", userRoute);
 app.use("/api/blogs", blogRoute);
+app.use("/", (req, res, next) => {
+  return res.status(200).json({
+    message: "Welcome to the blog app backend",
+  });
+});
 // Cloudinary
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
