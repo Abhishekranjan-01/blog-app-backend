@@ -17,14 +17,25 @@ const MONOGO_URL = process.env.MONOG_URI;
 //middleware
 app.use(express.json());
 app.use(cookieParser());
+// CORS Setup
+const allowedOrigins = ["https://blog-app-frontend-woad-seven.vercel.app"];
+
 app.use(
   cors({
-    origin: "https://blog-app-frontend-woad-seven.vercel.app",
-    // origin: process.env.FRONTEND_URL,
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   })
 );
+
+// Handle OPTIONS requests manually (important for preflight)
+app.options("*", cors());
 
 app.use(
   fileUpload({
