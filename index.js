@@ -18,7 +18,10 @@ const MONOGO_URL = process.env.MONOG_URI;
 app.use(express.json());
 app.use(cookieParser());
 // CORS Setup
-const allowedOrigins = ["https://blog-app-frontend-woad-seven.vercel.app"];
+const allowedOrigins = [
+  "https://blog-app-frontend-woad-seven.vercel.app",
+  "https://blog-app-frontend-woad-seven.vercel.app/",
+];
 
 app.use(
   cors({
