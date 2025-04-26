@@ -21,6 +21,8 @@ app.use(cookieParser());
 const allowedOrigins = [
   "https://blog-app-frontend-woad-seven.vercel.app",
   "https://blog-app-frontend-woad-seven.vercel.app/",
+  "https://blog.eklavyahometuition.in/",
+  "https://blog.eklavyahometuition.in",
 ];
 
 app.use(
