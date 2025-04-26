@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "blog-app-frontend-woad-seven.vercel.app",
+    origin: "https://blog-app-frontend-woad-seven.vercel.app",
     // origin: process.env.FRONTEND_URL,
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
