@@ -36,11 +36,23 @@ app.use(
     },
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "x-auth-token",
+      "Accept",
+      "Origin",
+      "X-Requested-With",
+      "Access-Control-Allow-Origin",
+      "Access-Control-Allow-Headers",
+      "Access-Control-Allow-Methods",
+      "Access-Control-Allow-Credentials",
+    ],
   })
 );
 
 // Handle OPTIONS requests manually (important for preflight)
-app.options("*", cors());
+// app.options("*", cors());
 
 app.use(
   fileUpload({
