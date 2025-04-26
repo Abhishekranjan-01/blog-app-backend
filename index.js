@@ -25,29 +25,26 @@ const allowedOrigins = [
   "https://blog.eklavyahometuition.in",
 ];
 
+const whiteList = [
+  // String(constants?.CLIENT_URL),
+  String("http://localhost:5174"),
+  String("https://blog-app-frontend-woad-seven.vercel.app"),
+  String("https://blog-app-frontend-woad-seven.vercel.app/"),
+  String("https://blog.eklavyahometuition.in/"),
+  String("https://blog.eklavyahometuition.in"),
+];
 app.use(
   cors({
     origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
+      if (!origin || whiteList.indexOf(origin) !== -1) {
         callback(null, true);
       } else {
-        callback(new Error("Not allowed by CORS"));
+        callback(null, false); // Don't throw an error, just disallow the request;
       }
     },
+
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: [
-      "Content-Type",
-      "Authorization",
-      "x-auth-token",
-      "Accept",
-      "Origin",
-      "X-Requested-With",
-      "Access-Control-Allow-Origin",
-      "Access-Control-Allow-Headers",
-      "Access-Control-Allow-Methods",
-      "Access-Control-Allow-Credentials",
-    ],
+    methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
   })
 );
 
