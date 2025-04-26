@@ -49,7 +49,7 @@ app.use(
 );
 
 // Handle OPTIONS requests manually (important for preflight)
-// app.options("*", cors());
+app.options("*", cors());
 
 app.use(
   fileUpload({
